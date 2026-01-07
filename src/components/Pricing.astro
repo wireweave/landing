@@ -1,0 +1,109 @@
+---
+const plans = [
+  {
+    name: 'Free',
+    price: '$0',
+    period: 'forever',
+    description: 'Perfect for trying out Wireweave',
+    features: [
+      '10 requests per minute',
+      '100 requests per day',
+      '1,000 monthly quota',
+      'Community support',
+    ],
+    cta: 'Get Started',
+    href: 'https://dashboard.wireweave.dev',
+    highlighted: false,
+  },
+  {
+    name: 'Pro',
+    price: '$19',
+    period: 'per month',
+    description: 'For professional designers and teams',
+    features: [
+      '60 requests per minute',
+      '2,000 requests per day',
+      '50,000 monthly quota',
+      'Priority support',
+      'Advanced themes',
+    ],
+    cta: 'Start Free Trial',
+    href: 'https://dashboard.wireweave.dev',
+    highlighted: true,
+  },
+  {
+    name: 'Enterprise',
+    price: 'Custom',
+    period: '',
+    description: 'For large organizations',
+    features: [
+      'Unlimited requests',
+      'Dedicated support',
+      'Custom integrations',
+      'SLA guarantee',
+      'On-premise option',
+    ],
+    cta: 'Contact Sales',
+    href: 'mailto:sales@wireweave.dev',
+    highlighted: false,
+  },
+];
+---
+
+<section id="pricing" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold text-gray-900">
+        Simple, transparent pricing
+      </h2>
+      <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+        Start free and scale as you grow. No hidden fees.
+      </p>
+    </div>
+
+    <div class="mt-16 grid lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+      {plans.map((plan) => (
+        <div class={`rounded-2xl p-8 ${plan.highlighted ? 'bg-primary-600 text-white ring-4 ring-primary-600 ring-offset-2' : 'bg-white'}`}>
+          <h3 class={`text-lg font-semibold ${plan.highlighted ? 'text-white' : 'text-gray-900'}`}>
+            {plan.name}
+          </h3>
+          <div class="mt-4 flex items-baseline gap-1">
+            <span class={`text-4xl font-bold ${plan.highlighted ? 'text-white' : 'text-gray-900'}`}>
+              {plan.price}
+            </span>
+            {plan.period && (
+              <span class={plan.highlighted ? 'text-primary-100' : 'text-gray-500'}>
+                /{plan.period}
+              </span>
+            )}
+          </div>
+          <p class={`mt-2 text-sm ${plan.highlighted ? 'text-primary-100' : 'text-gray-500'}`}>
+            {plan.description}
+          </p>
+          <ul class="mt-6 space-y-3">
+            {plan.features.map((feature) => (
+              <li class="flex items-start gap-3">
+                <svg class={`w-5 h-5 flex-shrink-0 ${plan.highlighted ? 'text-primary-200' : 'text-primary-600'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class={`text-sm ${plan.highlighted ? 'text-white' : 'text-gray-600'}`}>
+                  {feature}
+                </span>
+              </li>
+            ))}
+          </ul>
+          <a
+            href={plan.href}
+            class={`mt-8 block w-full py-3 px-4 text-center text-sm font-medium rounded-lg transition-colors ${
+              plan.highlighted
+                ? 'bg-white text-primary-600 hover:bg-primary-50'
+                : 'bg-primary-600 text-white hover:bg-primary-700'
+            }`}
+          >
+            {plan.cta}
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

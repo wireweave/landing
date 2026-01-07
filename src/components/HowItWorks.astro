@@ -1,0 +1,63 @@
+---
+const steps = [
+  {
+    number: '01',
+    title: 'Write DSL Code',
+    description: 'Use simple, readable syntax to describe your wireframe structure.',
+    code: `page "Dashboard" {
+  navbar { logo "App" }
+  sidebar { menu [...] }
+  main { cards [...] }
+}`,
+  },
+  {
+    number: '02',
+    title: 'AI Generates',
+    description: 'Claude or other AI assistants can write Wireweave DSL naturally.',
+    code: `User: "Create a settings page"
+Claude: "Here's a wireframe..."
+→ Uses wireweave_render_svg`,
+  },
+  {
+    number: '03',
+    title: 'Instant Preview',
+    description: 'Get HTML or SVG output ready for review and iteration.',
+    code: `Output: HTML/SVG wireframe
+→ Professional UI mockup
+→ Ready for feedback`,
+  },
+];
+---
+
+<section id="how-it-works" class="py-20 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold text-gray-900">
+        How it works
+      </h2>
+      <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+        From code to wireframe in three simple steps.
+      </p>
+    </div>
+
+    <div class="mt-16 grid lg:grid-cols-3 gap-8">
+      {steps.map((step, index) => (
+        <div class="relative">
+          {index < steps.length - 1 && (
+            <div class="hidden lg:block absolute top-12 left-full w-full h-0.5 bg-gray-200 -translate-x-1/2 z-0"></div>
+          )}
+          <div class="relative z-10">
+            <div class="w-10 h-10 bg-primary-600 text-white font-bold rounded-full flex items-center justify-center text-sm">
+              {step.number}
+            </div>
+            <h3 class="mt-4 text-xl font-semibold text-gray-900">{step.title}</h3>
+            <p class="mt-2 text-gray-600">{step.description}</p>
+            <div class="mt-4 bg-gray-900 rounded-lg p-4 overflow-x-auto">
+              <pre class="text-sm font-mono text-gray-300"><code set:text={step.code} /></pre>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

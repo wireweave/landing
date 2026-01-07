@@ -1,0 +1,57 @@
+---
+const faqs = [
+  {
+    question: 'What is Wireweave DSL?',
+    answer: 'Wireweave is a domain-specific language designed for describing UI wireframes in a simple, human-readable format. It was created specifically to enable AI assistants to generate wireframes naturally through conversation.',
+  },
+  {
+    question: 'How does AI integration work?',
+    answer: 'Wireweave provides an MCP (Model Context Protocol) server that integrates with AI assistants like Claude. When you ask the AI to create a wireframe, it uses Wireweave tools to generate and render the output.',
+  },
+  {
+    question: 'Is the core library open source?',
+    answer: 'Yes! The Wireweave core parser and renderer is open source under MIT license. You can use it freely in your own projects. The API service provides convenient cloud access with authentication and rate limiting.',
+  },
+  {
+    question: 'What output formats are supported?',
+    answer: 'Wireweave supports HTML with CSS and SVG output formats. HTML is great for interactive prototypes, while SVG is perfect for design documentation and sharing.',
+  },
+  {
+    question: 'Can I use Wireweave without AI?',
+    answer: 'Absolutely! While Wireweave is optimized for AI workflows, you can write DSL code manually using the Playground or integrate the core library directly into your tools.',
+  },
+  {
+    question: 'What components are available?',
+    answer: 'Wireweave includes a rich set of UI components: pages, cards, forms, inputs, buttons, tables, navigation elements, modals, and more. Check the documentation for the complete list.',
+  },
+];
+---
+
+<section class="py-20 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold text-gray-900">
+        Frequently asked questions
+      </h2>
+      <p class="mt-4 text-lg text-gray-600">
+        Everything you need to know about Wireweave.
+      </p>
+    </div>
+
+    <div class="mt-12 space-y-6">
+      {faqs.map((faq) => (
+        <details class="group bg-gray-50 rounded-xl">
+          <summary class="flex items-center justify-between cursor-pointer p-6 text-left">
+            <span class="text-lg font-medium text-gray-900">{faq.question}</span>
+            <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <div class="px-6 pb-6 text-gray-600">
+            {faq.answer}
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
